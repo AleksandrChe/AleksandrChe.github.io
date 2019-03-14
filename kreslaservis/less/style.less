@@ -1,7 +1,48 @@
+// Шрифты
+	@font-face {
+	    font-family: 'Montserrat';
+	    src: url('montserrat-100-normal.woff2') format('woff2'), url('montserrat-100-normal.woff') format('woff'), url('montserrat-100-normal.ttf') format('truetype');
+	    font-weight: 100;
+	    font-style: normal;
+	}
+
+	@font-face {
+	    font-family: 'Montserrat';
+	    src: url('montserrat-300-normal.woff2') format('woff2'), url('montserrat-300-normal.woff') format('woff'), url('montserrat-300-normal.ttf') format('truetype');
+	    font-weight: 300;
+	    font-style: normal;
+	}
+
+	@font-face {
+	    font-family: 'Montserrat';
+	    src: url('montserrat-700-normal.woff2') format('woff2'), url('montserrat-700-normal.woff') format('woff'), url('montserrat-700-normal.ttf') format('truetype');
+	    font-weight: 700;
+	    font-style: normal;
+	}
+
+	.light {
+		font-family: 'Montserrat';
+		font-weight: 100;
+		font-style: normal;
+	}
+
+	.regular {
+		font-family: 'Montserrat';
+		font-weight: 300;
+		font-style: normal;
+	}
+
+	.bold {
+		font-family: 'Montserrat';
+		font-weight: 700;
+		font-style: normal;
+	}
+
 // Базовые цвета
 	@text-color: #2A363B;
 	@alert: #E84A5F;
-	@active: #FF847C; 
+	@active: #FF847C;
+	@alternative: #99B898; 
 
 // Базовые настройки
 	* {
@@ -27,3 +68,66 @@
 		width: 1170px;
 		margin: 0 auto;
 	}
+
+// Header
+	.header {
+		// header-nav
+		.header-nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 70px;
+			padding: 0 30px;
+			// header-nav__logo
+			.header-nav__logo {
+				font-size: 2rem;				
+				.regular();
+				.logo {
+					color: @text-color;
+					span {
+						border: 2px solid @active;
+						color: @active;
+						padding: 2px 4px;
+					}
+				}
+			}
+			.header-nav__menu {
+				.menu {
+					display: flex;
+					font-size: 1.4rem;
+					.menu-item {
+						margin-right: 3rem;						
+						a {
+							color: @text-color;
+						}
+						a::after {
+							content: '';
+							display: block;
+							width: 100%;
+							height: 1px;
+							background: @active;
+							transform: scale(0);							
+							transition: all 0.2s ease;							
+						}	
+						a:hover::after {
+							transform: scale(1);							
+						}				
+					}					
+					.active a::after {
+						transform: scale(1);
+					}
+					:last-child {
+						margin-right: 0;
+					}				
+				}
+			}
+		}
+
+		.offer_2 {
+			height: 600px;
+		}
+		.offer_2 {
+			background: @alternative;
+		}
+	}
+	 

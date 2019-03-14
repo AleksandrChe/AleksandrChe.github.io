@@ -1,3 +1,36 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('montserrat-100-normal.woff2') format('woff2'), url('montserrat-100-normal.woff') format('woff'), url('montserrat-100-normal.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('montserrat-300-normal.woff2') format('woff2'), url('montserrat-300-normal.woff') format('woff'), url('montserrat-300-normal.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('montserrat-700-normal.woff2') format('woff2'), url('montserrat-700-normal.woff') format('woff'), url('montserrat-700-normal.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+.light {
+  font-family: 'Montserrat';
+  font-weight: 100;
+  font-style: normal;
+}
+.regular {
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-style: normal;
+}
+.bold {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-style: normal;
+}
 * {
   padding: 0;
   margin: 0;
@@ -18,4 +51,71 @@ a {
 .container {
   width: 1170px;
   margin: 0 auto;
+}
+.header .header-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 70px;
+  padding: 0 30px;
+}
+.header .header-nav .header-nav__logo {
+  font-size: 2rem;
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-style: normal;
+}
+.header .header-nav .header-nav__logo .logo {
+  color: #2a363b;
+}
+.header .header-nav .header-nav__logo .logo span {
+  border: 2px solid #ff847c;
+  color: #ff847c;
+  padding: 2px 4px;
+}
+.header .header-nav .header-nav__menu .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 1.4rem;
+}
+.header .header-nav .header-nav__menu .menu .menu-item {
+  margin-right: 3rem;
+}
+.header .header-nav .header-nav__menu .menu .menu-item a {
+  color: #2a363b;
+}
+.header .header-nav .header-nav__menu .menu .menu-item a::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #ff847c;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.header .header-nav .header-nav__menu .menu .menu-item a:hover::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.header .header-nav .header-nav__menu .menu .active a::after {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.header .header-nav .header-nav__menu .menu :last-child {
+  margin-right: 0;
+}
+.header .offer_2 {
+  height: 600px;
+}
+.header .offer_2 {
+  background: #99b898;
 }
