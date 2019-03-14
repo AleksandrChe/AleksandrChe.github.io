@@ -1,0 +1,92 @@
+// Header
+.header {
+	height: 100vh;
+	background: url("../images/header.jpg") no-repeat;
+	background-position: center bottom;
+	background-size: cover;
+	.menu-wrap {
+		background: #fff;
+	}		
+	// header-nav
+	&-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 70px;
+		padding: 0 30px;
+		// header-nav__logo
+		&__logo {
+			font-size: 2.4rem;				
+			.light();
+			.logo {
+				color: @text-color;
+				span {
+					border: 2px solid @active;
+					color: @active;
+					padding: 2px 4px;
+				}
+			}
+		}
+		&__menu {
+			.menu {
+				display: flex;
+				font-size: 1.4rem;
+				.regular();
+				&-item {
+					margin-right: 3rem;						
+					a {
+						color: @text-color;						
+						&::after {
+							content: '';
+							display: block;
+							width: 100%;
+							height: 1px;
+							background: @active;
+							transform: scale(0);							
+							transition: all 0.2s ease;							
+						}
+						&:hover {
+							color: @active;
+							&::after {
+								transform: scale(1);							
+							}
+						}
+					}										
+				}					
+				.active {
+					a {
+						color: @active;
+						&::after {
+							transform: scale(1);
+						}
+					}
+				}
+				:last-child {
+					margin-right: 0;
+				}				
+			}
+		}
+	}
+
+	&-content {
+		display: inline-block;		
+		margin-top: 150px;
+		margin-left: 20px;
+		padding: 50px;
+		// background: @alternative;
+		&__title {				
+			font-size: 4rem;
+			text-transform: uppercase;
+			line-height: 6rem;
+			color: @text-color;
+			margin-bottom: 30px;
+			.bold();
+		}
+		&__subtitle {
+			font-size: 1.7rem;
+			color: @active;
+			.regular();
+			margin-left: 20px;
+		}
+	}
+}

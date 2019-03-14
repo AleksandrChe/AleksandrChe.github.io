@@ -1,18 +1,18 @@
 @font-face {
   font-family: 'Montserrat';
-  src: url('montserrat-100-normal.woff2') format('woff2'), url('montserrat-100-normal.woff') format('woff'), url('montserrat-100-normal.ttf') format('truetype');
+  src: url('../fonts/montserrat-100-normal.woff2') format('woff2'), url('../fonts/montserrat-100-normal.woff') format('woff'), url('../fonts/montserrat-100-normal.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('montserrat-300-normal.woff2') format('woff2'), url('montserrat-300-normal.woff') format('woff'), url('montserrat-300-normal.ttf') format('truetype');
+  src: url('../fonts/montserrat-300-normal.woff2') format('woff2'), url('../fonts/montserrat-300-normal.woff') format('woff'), url('../fonts/montserrat-300-normal.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('montserrat-700-normal.woff2') format('woff2'), url('montserrat-700-normal.woff') format('woff'), url('montserrat-700-normal.ttf') format('truetype');
+  src: url('../fonts/montserrat-700-normal.woff2') format('woff2'), url('../fonts/montserrat-700-normal.woff') format('woff'), url('../fonts/montserrat-700-normal.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
@@ -52,7 +52,16 @@ a {
   width: 1170px;
   margin: 0 auto;
 }
-.header .header-nav {
+.header {
+  height: 100vh;
+  background: url("../images/header.jpg") no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+}
+.header .menu-wrap {
+  background: #fff;
+}
+.header-nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,33 +74,36 @@ a {
   height: 70px;
   padding: 0 30px;
 }
-.header .header-nav .header-nav__logo {
-  font-size: 2rem;
+.header-nav__logo {
+  font-size: 2.4rem;
   font-family: 'Montserrat';
-  font-weight: 300;
+  font-weight: 100;
   font-style: normal;
 }
-.header .header-nav .header-nav__logo .logo {
+.header-nav__logo .logo {
   color: #2a363b;
 }
-.header .header-nav .header-nav__logo .logo span {
+.header-nav__logo .logo span {
   border: 2px solid #ff847c;
   color: #ff847c;
   padding: 2px 4px;
 }
-.header .header-nav .header-nav__menu .menu {
+.header-nav__menu .menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   font-size: 1.4rem;
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-style: normal;
 }
-.header .header-nav .header-nav__menu .menu .menu-item {
+.header-nav__menu .menu-item {
   margin-right: 3rem;
 }
-.header .header-nav .header-nav__menu .menu .menu-item a {
+.header-nav__menu .menu-item a {
   color: #2a363b;
 }
-.header .header-nav .header-nav__menu .menu .menu-item a::after {
+.header-nav__menu .menu-item a::after {
   content: '';
   display: block;
   width: 100%;
@@ -102,20 +114,44 @@ a {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
-.header .header-nav .header-nav__menu .menu .menu-item a:hover::after {
+.header-nav__menu .menu-item a:hover {
+  color: #ff847c;
+}
+.header-nav__menu .menu-item a:hover::after {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
-.header .header-nav .header-nav__menu .menu .active a::after {
+.header-nav__menu .menu .active a {
+  color: #ff847c;
+}
+.header-nav__menu .menu .active a::after {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
-.header .header-nav .header-nav__menu .menu :last-child {
+.header-nav__menu .menu :last-child {
   margin-right: 0;
 }
-.header .offer_2 {
-  height: 600px;
+.header-content {
+  display: inline-block;
+  margin-top: 150px;
+  margin-left: 20px;
+  padding: 50px;
 }
-.header .offer_2 {
-  background: #99b898;
+.header-content__title {
+  font-size: 4rem;
+  text-transform: uppercase;
+  line-height: 6rem;
+  color: #2a363b;
+  margin-bottom: 30px;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-style: normal;
+}
+.header-content__subtitle {
+  font-size: 1.7rem;
+  color: #ff847c;
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-style: normal;
+  margin-left: 20px;
 }
