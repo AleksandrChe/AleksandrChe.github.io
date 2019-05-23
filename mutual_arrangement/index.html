@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Системы искусственного интеллекта</title>
+    <link rel="stylesheet" href="css/main.css" type="text/css">    
+    
+</head>
+<body onload="clearCnvs()">
+    <header>
+        <div class="logo">
+            
+        </div>        
+    </header>
+    
+    <div class="wrapper">
+       <div class="settings">
+           <input type="button" id="minus" value="-">
+           <input type="text" id="size" value="20" disabled>
+           <input type="button" id="plus"  value="+">
+       </div>
+       <div class="data">
+            <p id="head-label">Исходные данные:</p>
+            <div id="circle1">
+                <p id="hc1"><b>Окружность 1:</b></p>
+                <label>
+                    <p>Центр окружности (x, y):</p>
+                    <input type="text" id="x1" value="4">
+                    <input type="text" id="y1" value="4">
+                </label>
+                <label>
+                    <p>Радиус окружности:</p>
+                    <input type="text" id="r1" value="2">
+                </label>
+            </div>
+            
+            <div id="circle2">
+                <p id="hc2"><b>Окружность 2:</b></p>
+                <label>
+                    <p>Центр окружности (x, y):</p>
+                    <input type="text" id="x2" value="1">
+                    <input type="text" id="y2" value="4">
+                </label>
+                <label>
+                    <p>Радиус окружности:</p>
+                    <input type="text" id="r2" value="3">
+                </label>
+            </div> 
+            
+            <div id="btn-block">
+                <input type="button" id="btn" value="Проверить">
+            </div>                       
+        </div>        
+        <div class="table">
+            <canvas id="cnvs" width="650px" height="600px">
+                <p>Ваш браузер не поддерживает рисование.</p>
+            </canvas>
+        </div>
+        <div class="result">
+            <p><b>Результат:</b></p>
+           <p><output id="result" name="result"></output></p>
+       </div>
+    </div>
+    
+    <footer>
+    
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

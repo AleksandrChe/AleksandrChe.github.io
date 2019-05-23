@@ -1,0 +1,208 @@
+var canvas = document.getElementById('cnvs');
+var context = canvas.getContext('2d');
+
+var button = document.getElementById('btn');
+var buttonMinus = document.getElementById('minus');
+var buttonPlus = document.getElementById('plus');
+var output = document.getElementById('size');
+
+var size = 15;
+var step = 5;
+var ox = canvas.width/2;
+var oy = canvas.height/2;
+
+var mod = false;
+
+function clearCnvs() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    drawPlot();
+};
+
+function drawPlot() {
+    context.beginPath();
+    context.lineWidth = 3;
+    context.strokeStyle = 'black';
+    context.moveTo(0, canvas.height/2);
+    context.lineTo(canvas.width, canvas.height/2);
+    context.stroke();
+    
+    context.beginPath();
+    context.lineWidth = 3;
+    context.strokeStyle = 'black';
+    context.moveTo(canvas.width/2, 0);
+    context.lineTo(canvas.width/2, canvas.height);
+    context.stroke();
+    
+    
+    var cx = canvas.width/2;    
+    context.beginPath();
+    context.lineWidth = 1;
+    context.strokeStyle = 'grey';    
+    while(cx < canvas.width)
+    {
+        context.moveTo(cx+size, 0);
+        context.lineTo(cx+size, canvas.height);        
+        cx+=size;
+    }    
+    cx = canvas.width/2;    
+    while(cx > 0)
+    {
+        context.moveTo(cx-size, 0);
+        context.lineTo(cx-size, canvas.height);
+        cx-=size;
+    }
+    
+    var cy = canvas.height/2;
+    while(cy < canvas.height)
+    {
+        context.moveTo(0, cy+size);
+        context.lineTo(canvas.width, cy+size);        
+        cy+=size;
+    }    
+    cy = canvas.height/2;    
+    while(cy > 0)
+    {
+        context.moveTo(0, cy-size);
+        context.lineTo(canvas.width, cy-size);
+        cy-=size;
+    }    
+    context.stroke();
+};
+
+function drawCircle(x1, y1, r1, x2, y2, r2) {
+    context.beginPath();
+    context.lineWidth = 3;
+    context.strokeStyle = 'red';
+        console.log(ox+x1*size + ' ' + (oy-(y1*size)) + ' ' + r1*size);
+    context.arc(ox+x1*size, (oy-(y1*size)), (r1*size), 0, Math.PI*2);
+    context.closePath();
+    context.stroke();
+    
+    context.beginPath();
+    context.arc(ox+x1*size, (oy-(y1*size)), 1, 0, Math.PI*2);
+    context.closePath();
+    context.stroke();
+    
+    context.strokeStyle = 'green';
+    context.beginPath();
+        console.log(ox+x2*size + ' ' + (oy-(y2*size)) + ' ' + r2*size);    
+    context.arc(ox+x2*size, (oy-(y2*size)), (r2*size), 0, Math.PI*2);
+    context.closePath();
+    context.stroke();
+    
+    context.beginPath();
+    context.arc(ox+x2*size, (oy-(y2*size)), 1, 0, Math.PI*2);
+    context.closePath();
+    context.stroke();
+};
+
+function checkCircle(d, r1, r2) {
+    if(r1==r2){
+        var rp = +r1 + +r2;
+        var rm = +r1 - +r2;
+        if(d==0){
+            document.getElementById('result').value = 'Окружности совпадают';
+        }
+        else if(rm<d && d<rp && d!=0){
+            document.getElementById('result').value = 'Каждая из окружностей лежит частично внутри, частично снаружи. Окружности имеют две точки пересечения, расположенные симметрично относительно линии центров.';
+        }
+        else if(d==rp){
+            document.getElementById('result').value = 'Каждая из окружностей лежит вне другой, но они имеют общую точку на линии центров (внешнее касание)';
+        }
+        else if(d>rp){
+            document.getElementById('result').value = 'Каждая из окружностей целиком лежит вне другой';
+        };
+    }
+    else if(r1>r2){
+        var rp = +r1 + +r2;
+        var rm = +r1 - +r2;        
+        if(d==0) {
+            document.getElementById('result').value = 'Вторая окружность лежит внутри первой окружности и их центры совпадают';
+        };
+        if(d<rm && d!=0) {
+            document.getElementById('result').value = 'Вторая окружность лежит внутри первой окружности';
+        };
+        if(d==rm) {
+            document.getElementById('result').value = 'Вторая окружность лежит внутри первой окружности, но имеет с ней одну общую точку на линии цетров (имеет место внутренне касание)';
+        };
+        if(rm<d && d<rp) {
+            document.getElementById('result').value = 'Каждая из окружностей лежит частично внутри, частично снаружи. Окружности имеют две точки пересечения, расположенные симметрично относительно линии центров.';
+        };
+        if(d==rp) {
+            document.getElementById('result').value = 'Каждая из окружностей лежит вне другой, но они имеют общую точку на линии центров (внешнее касание)';
+        };
+        if(d>rp) {
+            document.getElementById('result').value = 'Каждая из окружностей целиком лежит вне другой';
+        };
+    }
+    else if(r1<r2){
+        var rp = +r2 + +r1;
+        var rm = +r2 - +r1;
+        if(d==0) {
+            document.getElementById('result').value = 'Первая окружность лежит внутри второй окружности и их центры совпадают';
+        };
+        if(d<rm && d!=0) {
+            document.getElementById('result').value = 'Первая окружность лежит внутри второй окружности';
+        };
+        if(d==rm) {
+            document.getElementById('result').value = 'Первая окружность лежит внутри второй окружности, но имеет с ней одну общую точку на линии цетров (имеет место внутренне касание)';
+        };
+        if(rm<d && d<rp) {
+            document.getElementById('result').value = 'Каждая из окружностей лежит частично внутри, частично снаружи. Окружности имеют две точки пересечения, расположенные симметрично относительно линии центров.';
+        };
+        if(d==rp) {
+            document.getElementById('result').value = 'Каждая из окружностей лежит вне другой, но они имеют общую точку на линии центров (внешнее касание)';
+        };
+        if(d>rp) {
+            document.getElementById('result').value = 'Каждая из окружностей целиком лежит вне другой';
+        };
+    };
+};
+
+function mainFunc() {
+    clearCnvs(); 
+    var x1 = document.getElementById('x1').value,
+        y1 = document.getElementById('y1').value,
+        r1 = document.getElementById('r1').value,
+        x2 = document.getElementById('x2').value,
+        y2 = document.getElementById('y2').value,
+        r2 = document.getElementById('r2').value;
+
+    if(r1 <= 0 or r2 <= 0){
+    	document.getElementById('result').value = 'Радиус задан неверно, задайте верный радиус (r > 0)';
+    }
+    else{
+	var d = Math.pow(Math.pow((x2-x1), 2) + Math.pow((y2-y1), 2), 0.5);     
+       
+   	drawCircle(x1, y1, r1, x2, y2, r2);  
+   	console.log(ox + ' ' + oy);
+   	checkCircle(d, r1, r2);
+    }
+}
+
+button.addEventListener('click', function() {
+    mainFunc();
+    mod = true;
+});
+
+buttonMinus.addEventListener('click', function() {
+    if(size > 10) {
+        size-=step;
+        clearCnvs();
+        document.getElementById('size').value = size;
+        if(mod) {
+            mainFunc();    
+        }        
+    }
+});
+
+buttonPlus.addEventListener('click', function() {
+    if(size < 100) {
+        size+=step;
+        clearCnvs();
+        document.getElementById('size').value = size;
+        if(mod) {
+            mainFunc();    
+        }
+    }
+});
